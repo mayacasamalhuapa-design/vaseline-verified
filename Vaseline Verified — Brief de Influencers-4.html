@@ -1,0 +1,834 @@
+<html data-type="html" data-identifier="b79260ec-1d11-4ab7-827d-9bef2409389c" data-title="Vaseline Verified — Brief de Influencers" data-version="11" width="1280" height="720" imagemodel="imagen-4" videomodel="veo-3"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  :root {
+    --blue: #2746D6;
+    --blue-deep: #1B33A8;
+    --blue-soft: #3D5BE0;
+    --white: #FFFFFF;
+    --ink: #0E1B5C;
+    --grad: linear-gradient(135deg, #8FB4FF 0%, #C9D6FF 25%, #FFFFFF 50%, #BFE0FF 75%, #9FC0FF 100%);
+    --font: "Helvetica Neue", "Arial Nova", Arial, system-ui, sans-serif;
+  }
+  html, body { width:100%; height:100%; overflow:hidden; background:#0B1750; font-family:var(--font); }
+  #deck { position:relative; width:100%; height:100%; overflow:hidden; background:var(--blue); }
+
+  .slide {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:78px 96px;
+    opacity:0; transform:translateX(40px); pointer-events:none;
+    transition:opacity .55s ease, transform .55s ease;
+    overflow:hidden;
+  }
+  .slide.active { opacity:1; transform:translateX(0); pointer-events:auto; }
+  .slide.white { background:var(--white); }
+
+  /* ---- Verified badge ---- */
+  .badge { position:relative; width:96px; height:88px; display:inline-flex; align-items:center; justify-content:center; }
+  .badge .blob {
+    position:absolute; inset:0; background:var(--grad); background-size:300% 300%;
+    border-radius:46% 54% 50% 50% / 56% 56% 44% 44%;
+    box-shadow:0 14px 40px rgba(0,0,0,.25);
+    animation:holo 6s ease infinite;
+  }
+  .badge svg { position:relative; width:46px; height:46px; }
+  @keyframes holo { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+
+  .kicker { font-size:14px; letter-spacing:4px; font-weight:700; text-transform:uppercase; color:var(--white); opacity:.7; margin-bottom:18px; }
+  .white .kicker { color:var(--blue); opacity:.85; }
+
+  h1.title { font-size:108px; line-height:.94; font-weight:800; color:var(--white); letter-spacing:-3px; }
+  h2.head { font-size:56px; line-height:1.02; font-weight:800; color:var(--white); letter-spacing:-1.5px; max-width:980px; }
+  .white h2.head { color:var(--blue); }
+  h3.sub { font-size:24px; font-weight:600; color:var(--white); opacity:.92; }
+
+  .lead { font-size:23px; line-height:1.5; font-weight:400; color:var(--white); max-width:860px; opacity:.95; }
+  .white .lead { color:var(--ink); opacity:.9; }
+
+  /* glitch verified wordmark */
+  .verified-word { font-size:140px; font-weight:800; color:var(--white); letter-spacing:-4px; position:relative; line-height:1; text-shadow:0 6px 30px rgba(0,0,0,.35); }
+  .verified-word .v { display:inline-block; transform:translateY(8px) scaleY(.92); }
+
+  .cover-foot { display:flex; align-items:center; gap:18px; margin-top:44px; }
+  .vmark { font-size:34px; font-weight:800; color:var(--white); letter-spacing:.5px; }
+  .pill { font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); background:var(--white); padding:9px 16px; border-radius:30px; }
+
+  /* lists / grids */
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px 56px; margin-top:34px; }
+  .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:38px; }
+  .item { padding:22px 24px; border-radius:18px; background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.16); }
+  .item .n { font-size:13px; font-weight:800; letter-spacing:2px; color:#BFD0FF; margin-bottom:8px; }
+  .item h4 { font-size:21px; font-weight:800; color:var(--white); margin-bottom:6px; letter-spacing:-.3px; }
+  .item p { font-size:15.5px; line-height:1.45; color:var(--white); opacity:.86; }
+
+  .pillar h4 { font-size:23px; }
+  .pillar { background:rgba(255,255,255,.08); }
+
+  /* ---- communities ---- */
+  .comm-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:36px; }
+  .comm-cell { background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:24px 20px; display:flex; flex-direction:column; }
+  .comm-cell .tag-s { font-size:11.5px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#BFD0FF; margin-bottom:14px; }
+  .comm-cell h4 { font-size:23px; font-weight:800; color:#fff; letter-spacing:-.5px; margin-bottom:10px; line-height:1.02; }
+  .comm-cell p { font-size:14.5px; line-height:1.42; color:#fff; opacity:.84; }
+
+  .comm-blocks { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:30px; max-width:1010px; }
+  .comm-card { border-radius:18px; padding:28px 30px; }
+  .comm-card .comm-label { font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+  .comm-card p { font-size:17.5px; line-height:1.5; }
+  .slide[data-bg="blue"] .comm-card { background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18); }
+  .slide[data-bg="blue"] .comm-card .comm-label { color:#BFD0FF; }
+  .slide[data-bg="blue"] .comm-card p { color:#fff; opacity:.92; }
+  .white .comm-card { background:#EEF2FF; border:1px solid #D6DEFF; }
+  .white .comm-card .comm-label { color:var(--blue-soft); }
+  .white .comm-card p { color:var(--ink); opacity:.92; }
+  .comm-tag { font-size:18px; font-weight:700; letter-spacing:.2px; margin-top:14px; }
+  .slide[data-bg="blue"] .comm-tag { color:#BFD0FF; }
+  .white .comm-tag { color:var(--blue-soft); }
+
+  /* ---- hack list (catalogue) ---- */
+  .hack-cols { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:34px; }
+  .hack-col { background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.16); border-radius:18px; padding:24px 22px; }
+  .hack-col h4 { font-size:17px; font-weight:800; color:#fff; letter-spacing:-.2px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.2); }
+  .hack-col ul { list-style:none; display:flex; flex-direction:column; gap:11px; }
+  .hack-col li { display:flex; align-items:center; gap:11px; font-size:15.5px; font-weight:600; color:#fff; opacity:.92; }
+  .hack-col li .e { font-size:21px; width:26px; text-align:center; flex:none; }
+
+  /* stat slide */
+  .stats { display:flex; gap:60px; margin-top:42px; }
+  .stat .big { font-size:74px; font-weight:800; color:var(--white); letter-spacing:-2px; line-height:1; }
+  .stat .lbl { font-size:16px; font-weight:600; color:#CAD6FF; margin-top:10px; max-width:200px; }
+
+  .split { display:flex; gap:24px; margin-top:40px; align-items:stretch; }
+  .seg { border-radius:20px; padding:30px 30px; display:flex; flex-direction:column; justify-content:flex-end; }
+  .seg.big { flex:0 0 64%; background:var(--white); }
+  .seg.sm { flex:1; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); }
+  .seg .pct { font-size:84px; font-weight:800; letter-spacing:-3px; line-height:.9; }
+  .seg.big .pct { color:var(--blue); }
+  .seg.sm .pct { color:var(--white); }
+  .seg .desc { font-size:18px; font-weight:600; margin-top:14px; line-height:1.35; }
+  .seg.big .desc { color:var(--ink); }
+  .seg.sm .desc { color:var(--white); opacity:.92; }
+
+  .dd { display:grid; grid-template-columns:1fr 1fr; gap:34px; margin-top:34px; }
+  .col h4 { font-size:24px; font-weight:800; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+  .col.do h4 { color:#1A8E5F; }
+  .col.dont h4 { color:#D43A3A; }
+  .col ul { list-style:none; }
+  .col li { font-size:16px; line-height:1.4; color:var(--ink); padding:9px 0 9px 28px; position:relative; border-bottom:1px solid rgba(14,27,92,.08); opacity:.92; }
+  .col li::before { position:absolute; left:0; top:9px; font-weight:800; }
+  .col.do li::before { content:"✓"; color:#1A8E5F; }
+  .col.dont li::before { content:"✕"; color:#D43A3A; }
+
+  .steps { display:flex; flex-direction:column; gap:12px; margin-top:30px; }
+  .step { display:flex; align-items:center; gap:22px; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.15); border-radius:14px; padding:16px 24px; }
+  .step .sn { font-size:22px; font-weight:800; color:#BFD0FF; min-width:34px; }
+  .step .st { font-size:19px; font-weight:800; color:var(--white); min-width:230px; }
+  .step .sd { font-size:16px; color:var(--white); opacity:.82; }
+
+  .tags { display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; }
+  .tag { font-size:26px; font-weight:800; color:var(--blue); background:var(--white); padding:14px 26px; border-radius:40px; letter-spacing:-.5px; }
+  .cta-box { margin-top:34px; background:rgba(255,255,255,.1); border-left:5px solid var(--white); border-radius:0 14px 14px 0; padding:24px 30px; max-width:820px; }
+  .cta-box p { font-size:21px; line-height:1.45; color:var(--white); }
+
+  .cards { display:flex; gap:26px; margin-top:40px; }
+  .card { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:18px; padding:30px; flex:1; }
+  .card .role { font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#BFD0FF; font-weight:700; }
+  .card .nm { font-size:28px; font-weight:800; color:var(--white); margin:10px 0 8px; }
+  .card .mail { font-size:16px; color:var(--white); opacity:.86; }
+
+  /* cover image */
+  .hero-img { position:absolute; right:0; top:0; width:50%; height:100%; object-fit:cover; opacity:.97; }
+  .fade-r { position:absolute; right:0; top:0; width:60%; height:100%;
+    background:linear-gradient(90deg, var(--blue) 0%, rgba(39,70,214,.55) 35%, rgba(39,70,214,0) 70%); pointer-events:none; }
+
+  /* nav */
+  #nav { position:absolute; bottom:26px; left:96px; display:flex; align-items:center; gap:18px; z-index:30; }
+  .arrow { width:44px; height:44px; border-radius:50%; border:1.5px solid rgba(255,255,255,.5); background:rgba(255,255,255,.06);
+    color:var(--white); font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.2s; }
+  .arrow:hover { background:var(--white); color:var(--blue); border-color:var(--white); }
+  .white #nav .arrow { border-color:rgba(39,70,214,.4); color:var(--blue); }
+  .dots { display:flex; gap:8px; }
+  .dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.35); cursor:pointer; transition:.25s; }
+  .dot.on { background:var(--white); width:26px; border-radius:5px; }
+  #counter { position:absolute; bottom:34px; right:96px; font-size:15px; font-weight:700; letter-spacing:2px; color:var(--white); opacity:.7; z-index:30; }
+  .wm { position:absolute; top:42px; right:96px; font-size:18px; font-weight:800; color:var(--white); opacity:.8; letter-spacing:.5px; z-index:20; }
+  .white .wm { color:var(--blue); }
+
+  /* ---- VERIFIED HACKS VIDEO SLIDES (fixed size + vertically centered) ---- */
+  .vh-slide-inner { display:flex; flex-direction:column; width:100%; }
+  .vh-title { font-size:42px; font-weight:800; color:#fff; letter-spacing:-1px; line-height:1; margin-bottom:6px; }
+  .vh-sub { font-size:16px; color:#BFD0FF; font-weight:600; margin-bottom:26px; }
+  .vids-row { display:flex; gap:24px; align-items:flex-start; justify-content:center; width:100%; }
+
+  .vphone { display:flex; flex-direction:column; width:208px; flex:none; }
+  .vframe { position:relative; width:208px; height:370px; border-radius:18px; overflow:hidden; background:#0B1750; border:2px solid rgba(255,255,255,.22); box-shadow:0 14px 34px rgba(0,0,0,.32); }
+  .vframe video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; cursor:pointer; }
+  .seal { position:absolute; top:9px; right:9px; width:34px; height:31px; display:flex; align-items:center; justify-content:center; z-index:3; pointer-events:none; }
+  .seal .blob { position:absolute; inset:0; background:var(--grad); background-size:300% 300%; border-radius:46% 54% 50% 50% / 56% 56% 44% 44%; animation:holo 6s ease infinite; box-shadow:0 4px 12px rgba(0,0,0,.3); }
+  .seal svg { position:relative; width:17px; height:17px; }
+  .vphone figcaption { margin-top:12px; color:#fff; font-size:13.5px; font-weight:700; line-height:1.3; }
+  .vtag { display:block; font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#BFD0FF; margin-bottom:5px; font-weight:800; }
+
+  /* ---- play/pause control ---- */
+  .playpause {
+    position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:56px; height:56px; border-radius:50%; border:none;
+    background:rgba(11,23,80,.55); backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:4;
+    opacity:.95; transition:opacity .25s ease, transform .15s ease;
+  }
+  .playpause:hover { background:rgba(11,23,80,.82); transform:translate(-50%,-50%) scale(1.07); }
+  .playpause svg { width:24px; height:24px; fill:#fff; }
+  .playpause .ico-pause { display:none; }
+  .playpause.is-playing .ico-play { display:none; }
+  .playpause.is-playing .ico-pause { display:block; }
+  /* cuando reproduce, el botón se oculta salvo al pasar el mouse */
+  .playpause.is-playing { opacity:0; }
+  .vframe:hover .playpause.is-playing { opacity:.95; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width:1100px) {
+    .slide { padding:54px 56px; }
+    #nav { left:56px; }
+    #counter { right:56px; }
+    .wm { right:56px; top:28px; font-size:15px; }
+    h1.title { font-size:80px; }
+    h2.head { font-size:44px; }
+    .vh-title { font-size:34px; }
+    .vh-sub { font-size:14px; margin-bottom:20px; }
+    .vids-row { gap:18px; }
+    .vphone { width:172px; }
+    .vframe { width:172px; height:306px; }
+    .vphone figcaption { font-size:12px; }
+    .vtag { font-size:8.5px; }
+    .playpause { width:48px; height:48px; }
+    .playpause svg { width:20px; height:20px; }
+    .grid4 { grid-template-columns:repeat(2,1fr); }
+    .comm-grid { grid-template-columns:repeat(2,1fr); }
+    .hack-cols { grid-template-columns:repeat(2,1fr); }
+    .stats { gap:36px; }
+    .stat .big { font-size:56px; }
+  }
+
+  @media (max-width:820px) {
+    .slide { padding:60px 36px 60px; justify-content:flex-start; overflow-y:auto; }
+    #nav { left:36px; bottom:16px; }
+    #counter { right:36px; bottom:22px; }
+    .wm { right:36px; top:22px; font-size:13px; }
+    h1.title { font-size:64px; }
+    h2.head { font-size:36px; }
+    .lead { font-size:17px; }
+    .vh-title { font-size:28px; }
+    .vh-sub { font-size:13px; margin-bottom:16px; }
+    .vids-row { gap:14px; flex-wrap:wrap; }
+    .vphone { width:150px; }
+    .vframe { width:150px; height:267px; }
+    .vphone figcaption { font-size:11.5px; }
+    .vtag { font-size:8px; }
+    .grid2 { grid-template-columns:1fr; gap:12px; }
+    .grid4 { grid-template-columns:1fr 1fr; gap:12px; }
+    .comm-grid { grid-template-columns:1fr 1fr; gap:12px; }
+    .comm-blocks { grid-template-columns:1fr; }
+    .hack-cols { grid-template-columns:1fr 1fr; gap:12px; }
+    .stats { flex-direction:column; gap:20px; margin-top:20px; }
+    .stat .big { font-size:52px; }
+    .split { flex-direction:column; gap:14px; }
+    .seg.big { flex:none; }
+    .cards { flex-direction:column; gap:14px; }
+    .hero-img { display:none; }
+    .fade-r { display:none; }
+    .steps { gap:8px; }
+    .step { padding:12px 16px; gap:14px; }
+    .step .st { font-size:15px; min-width:160px; }
+    .step .sd { font-size:13px; }
+    .dd { grid-template-columns:1fr; gap:20px; }
+    .tags { gap:10px; margin-top:20px; }
+    .tag { font-size:20px; padding:10px 18px; }
+    .arrow { width:38px; height:38px; }
+    .dot.on { width:20px; }
+    .verified-word { font-size:100px; }
+    .cover-foot { margin-top:28px; }
+  }
+
+  @media (max-width:520px) {
+    .slide { padding:52px 20px 56px; }
+    #nav { left:20px; bottom:12px; gap:12px; }
+    #counter { right:20px; bottom:18px; font-size:12px; }
+    .wm { right:20px; top:18px; font-size:12px; }
+    h2.head { font-size:28px; }
+    h1.title { font-size:52px; }
+    .lead { font-size:15px; }
+    .kicker { font-size:11px; margin-bottom:10px; }
+    .vh-title { font-size:22px; }
+    .vh-sub { font-size:12px; }
+    .vphone { width:130px; }
+    .vframe { width:130px; height:231px; }
+    .vphone figcaption { font-size:11px; }
+    .vtag { font-size:7.5px; letter-spacing:1px; }
+    .grid4 { grid-template-columns:1fr; }
+    .comm-grid { grid-template-columns:1fr; }
+    .hack-cols { grid-template-columns:1fr; }
+    .item h4 { font-size:17px; }
+    .item p { font-size:13px; }
+    .stat .big { font-size:44px; }
+    .seg .pct { font-size:64px; }
+    .verified-word { font-size:72px; }
+    .comm-cell h4 { font-size:18px; }
+    .comm-cell p { font-size:13px; }
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <!-- 01 COVER -->
+  <section class="slide active" data-bg="blue">
+    <img class="hero-img" src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/collage.png" alt="Vaseline Verified collage">
+    <div class="fade-r"></div>
+    <div class="badge" style="margin-bottom:26px;">
+      <span class="blob"></span>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <p id="p-cover-k" class="kicker">Vaseline × Ogilvy · Brief de Influencers</p>
+    <h1 id="h-cover" class="verified-word"><span class="v">V</span>erified</h1>
+    <h3 id="h-cover-sub" class="sub" style="margin-top:18px; max-width:560px;">If it's Vaseline, it's Verified — Pruebas sobre promesas.</h3>
+    <div class="cover-foot">
+      <span class="vmark">Vaseline</span>
+      <span class="pill">LATAM · Centroamérica</span>
+    </div>
+  </section>
+
+  <!-- 02 CONTEXTO -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p2-k" class="kicker">El contexto</p>
+    <h2 id="h2-head" class="head">De household staple<br>a ícono cultural.</h2>
+    <p id="p2-lead" class="lead" style="margin-top:24px;">Vaseline es un ícono cultural, celebrado por su versatilidad: de primeros auxilios a beauty hacks. Pasamos de "petrolato básico" a un masterbrand de skincare — <strong>beauty from healthy skin</strong>.</p>
+    <div class="stats">
+      <div class="stat"><div class="big">#1</div><div class="lbl">líder global en cuidado de manos y cuerpo</div></div>
+      <div class="stat"><div class="big">+75</div><div class="lbl">países donde está presente la marca</div></div>
+      <div class="stat"><div class="big">1.5B</div><div class="lbl">hogares alrededor del mundo</div></div>
+    </div>
+  </section>
+
+  <!-- 03 OBJETIVO -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p3-k" class="kicker">01 · Objetivo de la campaña</p>
+    <h2 id="h3-head" class="head">Volver a Vaseline una marca<br>culturalmente relevante.</h2>
+    <p id="p3-lead" class="lead" style="margin-top:22px;">Rompemos la idea de que es un producto de usos limitados y para un rango etario específico. La misión: demostrar la versatilidad <strong>con pruebas, no con hype.</strong></p>
+    <div class="grid2">
+      <div class="item"><div class="n">01</div><h4 id="h3a">Reposicionar</h4><p>Inclusiva, versátil y aspiracional pero alcanzable.</p></div>
+      <div class="item"><div class="n">02</div><h4 id="h3b">Conectar</h4><p>Contenido orgánico, honesto y dinámico con audiencias reales.</p></div>
+      <div class="item"><div class="n">03</div><h4 id="h3c">Amplificar</h4><p>Llevar el sello "Verified" más allá del petrolato, a todo el portafolio.</p></div>
+    </div>
+  </section>
+
+  <!-- 04 CONCEPTO -->
+  <section class="slide white" data-bg="white">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p4-k" class="kicker">02 · Concepto creativo</p>
+    <h2 id="h4-head" class="head">No todo lo que circula<br>en redes es verdad.<br><span style="color:var(--blue-soft)">Por eso entramos a verificar.</span></h2>
+    <p id="p4-lead" class="lead" style="margin-top:24px;">Tomamos los <em>hacks</em> más populares y los pasamos por el filtro de la marca para separar lo real de lo falso. Cuando un hack funciona, Vaseline lo declara <strong>VERIFIED ✔️</strong></p>
+  </section>
+
+  <!-- 05 70/30 -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p5-k" class="kicker">Reto de tropicalización · LATAM</p>
+    <h2 id="h5-head" class="head">Un sello, efecto paraguas.</h2>
+    <div class="split">
+      <div class="seg big">
+        <div class="pct">70%</div>
+        <div class="desc">Petrolato — Vaseline Jelly.<br>El héroe icónico y su versatilidad comprobada.</div>
+      </div>
+      <div class="seg sm">
+        <div class="pct">30%</div>
+        <div class="desc">Extiende el "Verified" a las nuevas subcategorías: cremas corporales, bálsamos labiales y stick solar.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 MENSAJES CLAVE -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p6-k" class="kicker">04 · Mensajes clave</p>
+    <h2 id="h6-head" class="head">Cuatro verdades<br>que repetimos.</h2>
+    <div class="grid4">
+      <div class="item"><div class="n">01</div><h4 id="h6a">Si es Vaseline, está Verificado</h4><p>Pruebas sobre promesas.</p></div>
+      <div class="item"><div class="n">02</div><h4 id="h6b">Versatilidad real</h4><p>Un producto, infinitos usos comprobados.</p></div>
+      <div class="item"><div class="n">03</div><h4 id="h6c">Belleza inclusiva</h4><p>Para todas las personas: edad, género, origen.</p></div>
+      <div class="item"><div class="n">04</div><h4 id="h6d">Salud antes que hype</h4><p>Resultados reales, al alcance de la mano.</p></div>
+    </div>
+  </section>
+
+  <!-- 07 COMMUNITIES · OVERVIEW -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p-comm-k" class="kicker">Brandverse · Communities</p>
+    <h2 id="h-comm-head" class="head">Las comunidades<br>que abarcamos.</h2>
+    <p id="p-comm-lead" class="lead" style="margin-top:18px; font-size:20px;">Comunidades a escala que conectan con intereses, identidades y culturas compartidas — el punto de partida para perfiles masculinos.</p>
+    <div class="comm-grid">
+      <div class="comm-cell">
+        <div class="tag-s">Interest</div>
+        <h4 id="h-comm-c1">Feel-Good Movers</h4>
+        <p>Perfiles activos, deportes y movimiento.</p>
+      </div>
+      <div class="comm-cell">
+        <div class="tag-s">Need state</div>
+        <h4 id="h-comm-c2">Need State</h4>
+        <p>Perfiles de wellness, beauty y skincare.</p>
+      </div>
+      <div class="comm-cell">
+        <div class="tag-s">Identity</div>
+        <h4 id="h-comm-c3">Identity</h4>
+        <p>Perfiles de moda, alternativos y culturales.</p>
+      </div>
+      <div class="comm-cell">
+        <div class="tag-s">Super fans</div>
+        <h4 id="h-comm-c4">Super Fans</h4>
+        <p>Perfiles de fanáticos de nichos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 COMMUNITY · FEEL-GOOD MOVERS -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p-fg-k" class="kicker">Communities · 01 / 04 · Interest</p>
+    <h2 id="h-fg-head" class="head" style="font-size:66px;">Feel-Good Movers</h2>
+    <p id="p-fg-tag" class="comm-tag">Perfiles activos, deportes y movimiento</p>
+    <div class="comm-blocks">
+      <div class="comm-card">
+        <div class="comm-label">Rol</div>
+        <p id="p-fg-rol">Mostrar el lado real del mundo fitness, liberándose del lado tóxico de la cultura del self-improvement y compartiendo consejos reales y funcionales.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-label">Uso del producto</div>
+        <p id="p-fg-uso">Protección para actividades al aire libre, hacks para el deporte y alivio de la resequedad post-ejercicio.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 COMMUNITY · NEED STATE -->
+  <section class="slide white" data-bg="white">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p-ns-k" class="kicker">Communities · 02 / 04 · Need state</p>
+    <h2 id="h-ns-head" class="head" style="font-size:66px;">Need State</h2>
+    <p id="p-ns-tag" class="comm-tag">Perfiles de wellness, beauty y skincare</p>
+    <div class="comm-blocks">
+      <div class="comm-card">
+        <div class="comm-label">Rol</div>
+        <p id="p-ns-rol">Promueven el cuidado y el bienestar personal a través de prácticas de wellness, y son expertos en probar rutinas de cuidado de la piel.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-label">Uso del producto</div>
+        <p id="p-ns-uso">Vaseline como aliado perfecto en la rutina: protección solar, reparación de daños en la piel y un genuino sentimiento de bienestar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 COMMUNITY · IDENTITY -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p-id-k" class="kicker">Communities · 03 / 04 · Identity</p>
+    <h2 id="h-id-head" class="head" style="font-size:66px;">Identity</h2>
+    <p id="p-id-tag" class="comm-tag">Perfiles de moda, alternativos y culturales</p>
+    <div class="comm-blocks">
+      <div class="comm-card">
+        <div class="comm-label">Rol</div>
+        <p id="p-id-rol">Ven en su estilo personal una oportunidad para encontrar felicidad: rompen las reglas de cómo "debería" verse la moda y priorizan su expresión y cultura, aun a costa de ser juzgados.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-label">Uso del producto</div>
+        <p id="p-id-uso">Hacer que su estilo único resalte aún más con Vaseline, potenciando la expresión personal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 COMMUNITY · SUPER FANS -->
+  <section class="slide white" data-bg="white">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p-sf-k" class="kicker">Communities · 04 / 04 · Super fans</p>
+    <h2 id="h-sf-head" class="head" style="font-size:66px;">Super Fans</h2>
+    <p id="p-sf-tag" class="comm-tag">Perfiles de fanáticos de nichos</p>
+    <div class="comm-blocks">
+      <div class="comm-card">
+        <div class="comm-label">Rol</div>
+        <p id="p-sf-rol">Hacen de sus pasiones una expresión personal: lo que aman —un grupo, un artista favorito o sus intereses únicos— sobresale como parte de su identidad.</p>
+      </div>
+      <div class="comm-card">
+        <div class="comm-label">Uso del producto</div>
+        <p id="p-sf-uso">Junto a Vaseline, seguir disfrutando de sus pasiones sin preocuparse por productos que dañen su piel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 VERIFIED HACKS · SLIDE A: Feel-Good Movers + Identity -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p class="kicker">Verified Hacks · En acción · 01 / 03</p>
+    <div class="vh-slide-inner">
+      <div class="vh-title">Los hacks verificados.</div>
+      <div class="vh-sub">Feel-Good Movers &amp; Identity — Probados y aprobados ✔️</div>
+      <div class="vids-row">
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/run.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Feel-Good Movers</span>Blister Prevention: cero ampollas al correr</figcaption>
+        </figure>
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/dye.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Identity</span>Hair Color Shield: protege tu piel al teñir</figcaption>
+        </figure>
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/2cb03d60c73c316a515a47894e1d233074f2b671/hollywood.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Identity</span>Hollywood Glow: el look de moda, verificado</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 VERIFIED HACKS · SLIDE B: Super Fans + Life Hackers -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p class="kicker">Verified Hacks · En acción · 02 / 03</p>
+    <div class="vh-slide-inner">
+      <div class="vh-title">Los hacks verificados.</div>
+      <div class="vh-sub">Super Fans &amp; Life Hackers — Hacks de nicho con sello Vaseline ✔️</div>
+      <div class="vids-row">
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/spice.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Super Fans</span>Spice Proof: manos sin ardor tras cocinar</figcaption>
+        </figure>
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/cuero.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Super Fans</span>Leather Care: tus goods, siempre impecables</figcaption>
+        </figure>
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/perfume.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Super Fans</span>Fragrance Booster: aroma que dura más</figcaption>
+        </figure>
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/ring.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Super Fans · Life Hackers</span>Ring Rescue: anillos que nunca se atoran</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 VERIFIED HACKS · SLIDE C: Need State -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p class="kicker">Verified Hacks · En acción · 03 / 03</p>
+    <div class="vh-slide-inner">
+      <div class="vh-title">Los hacks verificados.</div>
+      <div class="vh-sub">Need State · Super Fans — Skincare, wellness &amp; cámara con respaldo real ✔️</div>
+      <div class="vids-row">
+
+        <figure class="vphone">
+          <div class="vframe">
+            <span class="seal"><span class="blob"></span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+            <video src="https://raw.githubusercontent.com/mayacasamalhuapa-design/vaseline-verified/e310e74a5d6603ecdeee8b487e6c696a5492fdff/photo.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+            <button class="playpause" aria-label="Reproducir o pausar video">
+              <svg class="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="ico-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+          </div>
+          <figcaption><span class="vtag">Need State · Super Fans</span>Lens Glow Effect: el hack para brillar en cámara</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 VERIFIED HACKS · LISTA COMPLETA -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p-hl-k" class="kicker">Verified Hacks · El catálogo</p>
+    <h2 id="h-hl-head" class="head" style="font-size:44px; margin-bottom:2px;">Todos los hacks verificados.</h2>
+    <div class="hack-cols">
+      <div class="hack-col">
+        <h4 id="h-hl-1">✨ Glow Getters</h4>
+        <ul>
+          <li><span class="e">💄</span> Makeup Remover</li>
+          <li><span class="e">🪒</span> Post-Wax Treatment</li>
+          <li><span class="e">🎨</span> Hair Color Shield</li>
+          <li><span class="e">🌙</span> Slugging</li>
+          <li><span class="e">👁️</span> Brow Lift Prep</li>
+          <li><span class="e">🖋️</span> Tattoo Aftercare</li>
+        </ul>
+      </div>
+      <div class="hack-col">
+        <h4 id="h-hl-2">🛠️ Life Hackers</h4>
+        <ul>
+          <li><span class="e">👜</span> Leather Goods</li>
+          <li><span class="e">🌸</span> Fragrance Booster</li>
+          <li><span class="e">👞</span> Instant Shoe Shine</li>
+          <li><span class="e">📷</span> Lens Glow Effect</li>
+        </ul>
+      </div>
+      <div class="hack-col">
+        <h4 id="h-hl-3">🏃 Active Achievers</h4>
+        <ul>
+          <li><span class="e">🏃</span> Runner</li>
+          <li><span class="e">🦶</span> Blister Prevention</li>
+          <li><span class="e">🥊</span> Boxing Guard</li>
+        </ul>
+      </div>
+      <div class="hack-col">
+        <h4 id="h-hl-4">👨‍👩‍👧 Family Guardians</h4>
+        <ul>
+          <li><span class="e">🐶</span> Pet's Dry Nose Relief</li>
+          <li><span class="e">👶</span> Baby Rash Guard</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 TONO -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p7-k" class="kicker">05 · Tono de comunicación · Brandverse</p>
+    <h2 id="h7-head" class="head" style="font-size:48px;">Youth coded,<br>not youth cringe.</h2>
+    <div class="grid4">
+      <div class="item pillar"><h4 id="h7a">Skin Obsessed</h4><p>Autoridad OG en piel, con sabiduría y frescura.</p></div>
+      <div class="item pillar"><h4 id="h7b">Spirited</h4><p>Joven, inesperado, con chispa — nunca aburrido.</p></div>
+      <div class="item pillar"><h4 id="h7c">Grounded</h4><p>Cálido, cercano, real. Sin postureo.</p></div>
+      <div class="item pillar"><h4 id="h7d">Clear-cut</h4><p>Simple, directo, sin exageraciones ni letra chica.</p></div>
+    </div>
+  </section>
+
+  <!-- 17 ENTREGABLES -->
+  <section class="slide white" data-bg="white">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p8-k" class="kicker">06 · Entregables y formato</p>
+    <h2 id="h8-head" class="head">Corto, vertical<br>y al grano.</h2>
+    <div class="grid4">
+      <div class="item" style="background:#EEF2FF; border-color:#D6DEFF;"><h4 id="h8a" style="color:var(--blue)">Reel + TikTok</h4><p style="color:#3A4A8C">Video vertical en 4K, música libre de derechos.</p></div>
+      <div class="item" style="background:#EEF2FF; border-color:#D6DEFF;"><h4 id="h8b" style="color:var(--blue)">Máx. 1:10</h4><p style="color:#3A4A8C">Contenido masticado, directo y dinámico.</p></div>
+      <div class="item" style="background:#EEF2FF; border-color:#D6DEFF;"><h4 id="h8c" style="color:var(--blue)">1 hack por creador</h4><p style="color:#3A4A8C">Foco total = recordación.</p></div>
+      <div class="item" style="background:var(--blue); border-color:var(--blue);"><h4 id="h8d" style="color:#fff">Estructura</h4><p style="color:#fff; opacity:.9">Situación → Problema → Solución → Resultado.</p></div>
+    </div>
+  </section>
+
+  <!-- 18 DOS Y DONTS -->
+  <section class="slide white" data-bg="white">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p9-k" class="kicker">09 · Do's &amp; Don'ts</p>
+    <div class="dd">
+      <div class="col do">
+        <h4 id="h9a">DO's</h4>
+        <ul>
+          <li>El producto/marca es la estrella, desde el inicio y con tiempo en pantalla.</li>
+          <li>Enfocarse en el uso y la eficacia ligados al hack.</li>
+          <li>Mostrar beneficios claros y el porqué funciona (antes y después).</li>
+          <li>Traducir la ciencia a beneficios cotidianos y simples.</li>
+          <li>Tono optimista, orgánico y auténtico. Respetar claims reales.</li>
+        </ul>
+      </div>
+      <div class="col dont">
+        <h4 id="h9b">DON'Ts</h4>
+        <ul>
+          <li>Que el producto aparezca al final o muy poco tiempo.</li>
+          <li>Story time del creador por encima del producto.</li>
+          <li>Mostrar marcas/logos de competidores de la misma categoría.</li>
+          <li>Blanco y negro o filtros que alteren el color del producto.</li>
+          <li>Overpromising, mala luz, contenido sensible o publicar sin aprobación.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 19 PROCESO -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p10-k" class="kicker">10 · Proceso de trabajo</p>
+    <h2 id="h10-head" class="head" style="font-size:46px; margin-bottom:6px;">Del brief al post.</h2>
+    <div class="steps">
+      <div class="step"><span class="sn">1</span><span class="st">Kickoff / Brief</span><span class="sd">Brief, pilar y hack asignado — Ogilvy</span></div>
+      <div class="step"><span class="sn">2</span><span class="st">Logística</span><span class="sd">Recepción del producto + confirmación — Influencer + PR</span></div>
+      <div class="step"><span class="sn">3</span><span class="st">Guion / Pauta</span><span class="sd">Script orgánico basado en el hack — Influencer</span></div>
+      <div class="step"><span class="sn">4</span><span class="st">Revisión &amp; Preview</span><span class="sd">Alineación + feedback en máx. 48h — Ogilvy + Vaseline</span></div>
+      <div class="step"><span class="sn">5</span><span class="st">Publicación + Reporte</span><span class="sd">Reel + TikTok con caption aprobado → métricas — Influencer / PR</span></div>
+    </div>
+  </section>
+
+  <!-- 20 HASHTAGS + CTA -->
+  <section class="slide" data-bg="blue">
+    <span class="wm">Vaseline Verified</span>
+    <p id="p11-k" class="kicker">07 · 08 · Menciones &amp; CTA</p>
+    <h2 id="h11-head" class="head">Hablemos en su idioma.</h2>
+    <div class="tags">
+      <span class="tag">@vaseline</span>
+      <span class="tag">#VaselineVerified</span>
+    </div>
+    <p id="p11-lead" class="lead" style="margin-top:22px;">La @ desde el inicio y durante todo el contenido. Suma hashtags en tendencia de la categoría y del perfil del creador.</p>
+    <div class="cta-box">
+      <p id="p11-cta"><strong>CTA:</strong> Invita a la audiencia a probar el hack verificado por sí misma y descubrir la versatilidad de Vaseline — natural, en las palabras del creador.</p>
+    </div>
+  </section>
+
+  <!-- 21 CONTACTOS -->
+  <section class="slide white" data-bg="white">
+    <span class="wm">Vaseline Verified</span>
+    <div class="badge" style="margin-bottom:24px;">
+      <span class="blob"></span>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </div>
+    <p id="p12-k" class="kicker">11 · Contactos</p>
+    <h2 id="h12-head" class="head">Hagámoslo Verified.</h2>
+    <div class="cards">
+      <div class="card" style="background:#EEF2FF; border-color:#D6DEFF;">
+        <div class="role" style="color:var(--blue-soft)">PR Executive</div>
+        <div class="nm" style="color:var(--blue)">Maya Casamalhuapa</div>
+        <div class="mail" style="color:#3A4A8C">maya.casamalhuapa@ogilvy.com</div>
+      </div>
+      <div class="card" style="background:#EEF2FF; border-color:#D6DEFF;">
+        <div class="role" style="color:var(--blue-soft)">PR Director</div>
+        <div class="nm" style="color:var(--blue)">Antonio Pastore</div>
+        <div class="mail" style="color:#3A4A8C">antonio.pastore@ogilvy.com</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div id="nav">
+    <button class="arrow" id="prev" aria-label="Anterior">‹</button>
+    <button class="arrow" id="next" aria-label="Siguiente">›</button>
+    <div class="dots" id="dots"></div>
+  </div>
+  <div id="counter">01 / 21</div>
+
+</div>
+
+<script>
+  (function(){
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var deck = document.getElementById('deck');
+    var dotsWrap = document.getElementById('dots');
+    var counter = document.getElementById('counter');
+    var idx = 0;
+
+    slides.forEach(function(s, i){
+      var d = document.createElement('span');
+      d.className = 'dot' + (i===0 ? ' on' : '');
+      d.addEventListener('click', function(){ go(i); });
+      dotsWrap.appendChild(d);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function pad(n){ return (n<10?'0':'') + n; }
+
+    function go(n){
+      if(n < 0) n = slides.length - 1;
+      if(n >= slides.length) n = 0;
+      slides[idx].classList.remove('active');
+      dots[idx].classList.remove('on');
+      idx = n;
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('on');
+      deck.classList.toggle('white', slides[idx].getAttribute('data-bg') === 'white');
+      counter.textContent = pad(idx+1) + ' / ' + pad(slides.length);
+    }
+
+    document.getElementById('next').addEventListener('click', function(){ go(idx+1); });
+    document.getElementById('prev').addEventListener('click', function(){ go(idx-1); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight') go(idx+1);
+      if(e.key === 'ArrowLeft') go(idx-1);
+    });
+
+    counter.textContent = pad(1) + ' / ' + pad(slides.length);
+  })();
+
+  /* ---- Play / Pausa para cada video ---- */
+  (function(){
+    var frames = Array.prototype.slice.call(document.querySelectorAll('.vframe'));
+    frames.forEach(function(frame){
+      var video = frame.querySelector('video');
+      var btn = frame.querySelector('.playpause');
+      if(!video || !btn) return;
+
+      function sync(){ btn.classList.toggle('is-playing', !video.paused); }
+
+      function toggle(e){
+        if(e){ e.stopPropagation(); e.preventDefault(); }
+        if(video.paused){
+          var p = video.play();
+          if(p && p.catch){ p.catch(function(){}); }
+        } else {
+          video.pause();
+        }
+      }
+
+      btn.addEventListener('click', toggle);
+      video.addEventListener('click', toggle);
+      video.addEventListener('play', sync);
+      video.addEventListener('pause', sync);
+      sync();
+    });
+  })();
+</script>
+
+</body></html>
